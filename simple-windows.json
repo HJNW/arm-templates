@@ -62,8 +62,8 @@
     },
     "variables": {
       "nicName": "[concat(parameters('vmName'), '_NIC')]",
-      "subnetName": "subnet01",
-      "virtualNetworkName": "VNet01",
+      "subnetName": "Subnet",
+      "virtualNetworkName": "MyVNET",
       "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]"
     },
     "resources": [
@@ -112,6 +112,7 @@
             },
             "osDisk": {
               "createOption": "FromImage",
+              "name": "[concat(parameters('vmName'), '_OsDisk')]",
               "managedDisk": {
                 "storageAccountType": "StandardSSD_LRS"
               }
