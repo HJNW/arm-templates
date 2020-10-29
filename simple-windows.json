@@ -64,7 +64,8 @@
       "nicName": "[concat(parameters('vmName'), '_NIC')]",
       "subnetName": "subnet01",
       "virtualNetworkName": "VNet01",
-      "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]"
+      "networkRG": "PipelineTest",
+      "subnetRef": "[resourceId(variables('networkRG'),'Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]"
     },
     "resources": [
       {
