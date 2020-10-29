@@ -61,14 +61,14 @@
         },
         "numOfDataDisks": {
             "type": "int",
-            "defaultValue": "1",
+            "defaultValue": 1,
             "metadata": {
                 "description": "Number of data disks"
             }
         },
         "dataDiskSize": {
             "type": "int",
-            "defaultValue": "200",
+            "defaultValue": 200,
             "metadata": {
                 "description": "Size of a single data disk (GB)"
             }
