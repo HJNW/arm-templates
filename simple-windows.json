@@ -62,8 +62,8 @@
     },
     "variables": {
       "nicName": "[concat(parameters('vmName'), '_NIC')]",
-      "subnetName": "Subnet",
-      "virtualNetworkName": "MyVNET",
+      "subnetName": "subnet01",
+      "virtualNetworkName": "VNet01",
       "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]"
     },
     "resources": [
