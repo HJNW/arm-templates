@@ -140,7 +140,7 @@
                                 "name": "[concat(parameters('vmName'), '-dataDisk', padLeft(copyIndex('dataDisks'), 2, '0'))]",
                                 "lun": "[copyIndex('dataDisks')]",
                                 "createOption": "Empty",
-                                "diskSizeGB": "[parameters('dataDiskSize')]"
+                                "diskSizeGB": 1023
                             }
                         }
                     ]
