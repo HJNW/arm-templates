@@ -137,10 +137,10 @@
                             "name": "dataDisks",
                             "count": "[parameters('numOfDataDisks')]",
                             "input": {
-                                "name": "[concat(parameters('vmName'), '-dataDisk', padLeft(copyIndex('dataDisks'), 2, '0'))]",
+                                "name": "[concat(parameters('vmName'), '_DataDisk-', padLeft(copyIndex('dataDisks'), 2, '0'))]",
                                 "lun": "[copyIndex('dataDisks')]",
                                 "createOption": "Empty",
-                                "diskSizeGB": 1023
+                                "diskSizeGB": "[parameters('dataDiskSize')]"
                             }
                         }
                     ]
