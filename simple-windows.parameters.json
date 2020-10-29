@@ -16,6 +16,12 @@
         },
         "vmSize": {
             "value": "Standard_D3_v2"
+        },
+        "numOfDataDisks": {
+            "value": 1
+        },
+        "dataDiskSize": {
+            "value": 200
         }
     }
 }
