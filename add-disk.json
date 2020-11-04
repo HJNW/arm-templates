@@ -52,7 +52,14 @@
                 "description": "Name of the virtual machine."
             }
         },
-        "numOfDataDisks": {
+        "numOfExistingDataDisks": {
+            "type": "int",
+            "defaultValue": 1,
+            "metadata": {
+                "description": "Number of data disks"
+            }
+        },
+        "numOfNewDataDisks": {
             "type": "int",
             "defaultValue": 1,
             "metadata": {
@@ -103,9 +110,6 @@
                 "[resourceId('Microsoft.Network/networkInterfaces', variables('nicName'))]"
             ],
             "properties": {
-                "hardwareProfile": {
-                    "vmSize": "[reference(resourceId('Microsoft.Compute/virtualMachines', parameters('vmName'))).hardwareProfile.vmSize]"
-                },
                 "osProfile": {
                     "computerName": "[parameters('vmName')]",
                     "adminUsername": "[parameters('adminUsername')]",
@@ -128,10 +132,10 @@
                     "copy": [
                         {
                             "name": "dataDisks",
-                            "count": "[parameters('numOfDataDisks')]",
+                            "count": "[parameters('numOfNewDataDisks')]",
                             "input": {
-                                "name": "[concat(parameters('vmName'), '_DataDisk-', padLeft(add(length(reference(resourceId('Microsoft.Compute/virtualMachines', parameters('vmName'))).storageProfile.dataDisks),copyIndex('dataDisks')), 2, '0'))]",
-                                "lun": "[add(length(reference(resourceId('Microsoft.Compute/virtualMachines', parameters('vmName'))).storageProfile.dataDisks),copyIndex('dataDisks'))]",
+                                "name": "[concat(parameters('vmName'), '_DataDisk-', padLeft(add(parameters('numOfExistingDataDisks'),copyIndex('dataDisks')), 2, '0'))]",
+                                "lun": "[add(add(parameters('numOfExistingDataDisks'),copyIndex('dataDisks')) ,copyIndex('dataDisks'))]",
                                 "createOption": "Empty",
                                 "diskSizeGB": "[parameters('dataDiskSize')]"
                             }
