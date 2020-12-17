@@ -1,5 +1,5 @@
 #!/bin/bash
 
-yum -y install epel-release nginx
-systemctl start nginx
+sudo yum -y install epel-release nginx
+sudo systemctl start nginx
 
