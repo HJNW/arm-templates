@@ -9,7 +9,7 @@ foreach ( $volume in $volumes ) {
 	$maxSize = (Get-PartitionSupportedSize -DriveLetter $driveLetter).SizeMax
 	$size = (Get-Partition -DriveLetter $driveLetter).size
 	
-  # At least 1GB available
+  	# At least 1GB available
 	if ( $maxSize - $size -gt 1000000000 ) {
 		Resize-Partition -DriveLetter $driveLetter -Size $maxSize
 	}
